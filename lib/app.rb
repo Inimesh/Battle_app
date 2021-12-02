@@ -20,7 +20,7 @@ end
 
 post '/named-cat' do
   p params
-  @name = params[:name]
+  @name = params[:cat_name]
   erb(:index)
 end
 
