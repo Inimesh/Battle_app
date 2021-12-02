@@ -8,7 +8,7 @@ class Battle < Sinatra::Base
 
   # our routes go here
   get '/' do
-    "Hello Battle!"
+    "Testing infrastructure working!"
   end 
   # Start the server if this file is executed directly
   run! if app_file == $0
