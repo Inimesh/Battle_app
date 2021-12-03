@@ -10,6 +10,8 @@ class Battle < Sinatra::Base
 
   # our routes go here
   get '/' do
+    session[:player_1_hp] = 50
+    session[:player_2_hp] = 50 
     erb :index
   end 
 
@@ -23,9 +25,12 @@ class Battle < Sinatra::Base
     @player_1_name = session[:player_1_name]
     @player_2_name = session[:player_2_name]
 
-    session[:player_1_hp] = 50
-    session[:player_2_hp] = 50 
     erb :play
+  end
+
+  post '/attack' do 
+    session[:player_2_hp] -= 10 
+    redirect '/play'
   end
 
   # Start the server if this file is executed directly
