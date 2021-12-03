@@ -6,6 +6,7 @@ feature 'player name submission' do
     
     click_button "Fight!"
 
+
     expect(page).to have_content "Ben vs. Tom"
 
 

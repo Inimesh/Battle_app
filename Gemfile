@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'rack'
 gem 'webrick'
+gem 'launchy'
 
 gem 'capybara'
 
