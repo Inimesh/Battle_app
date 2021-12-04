@@ -1,20 +1,25 @@
 require 'player'
 
 describe Player do
+  subject { described_class.new("Tom") }
   it 'returns its name' do
-    player_1 = Player.new('Tom')
-    expect(player_1.name).to eq 'Tom'
+    expect(subject.name).to eq 'Tom'
   end
 
   it 'returns its HP' do
-    player_1 = Player.new('Tom')
-    expect(player_1.hp).to eq 50
+    expect(subject.hp).to eq 50
   end
 
   describe '#take_damage' do
-    it 'reduces hp by 10' do
-      player_1 = Player.new("Tom")
-      expect { player_1.take_damage }.to change { player_1.hp }.by -10
+    it 'reduces hp by 10 by default' do
+      expect { subject.take_damage }.to change { subject.hp }.by -Player::DEFAULT_DAMAGE
+    end
+  end
+
+  describe '#attack' do
+    it 'reduces hp by player passed as a parameter' do
+      opponent = Player.new("Ben")
+      expect { subject.attack(opponent) }.to change { opponent.hp }.by -Player::DEFAULT_DAMAGE
     end
   end
 end
