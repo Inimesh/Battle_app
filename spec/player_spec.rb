@@ -16,10 +16,4 @@ describe Player do
     end
   end
 
-  describe '#attack' do
-    it 'reduces hp by player passed as a parameter' do
-      opponent = Player.new("Ben")
-      expect { subject.attack(opponent) }.to change { opponent.hp }.by -Player::DEFAULT_DAMAGE
-    end
-  end
 end

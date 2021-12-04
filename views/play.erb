@@ -1,8 +1,11 @@
-<h1><%= @player_1_name %> vs. <%= @player_2_name %></h1>
+<h1><%= $player_1.name %> vs. <%= $player_2.name %></h1>
 
-<h2><%= @player_1_name %>: <%= $player_1.hp %> HP</h2>
-<h2><%= @player_2_name %>: <%= $player_2.hp %> HP</h2>
+<h2><%= $player_1.name %>: <%= $player_1.hp %> HP</h2>
+<h2><%= $player_2.name %>: <%= $player_2.hp %> HP</h2>
 
 <form action='/attack' method='post'> 
-<input type='submit' value='Attack opponent'> 
+  <label for="1_attack_2"><%= $player_1.name %></label>
+    <input id="1_attack_2" type='submit' name="attack" value="Attack <%= $player_2.name %>">
+  <label for="2_attack_1"><%= $player_2.name %></label>
+    <input id="2_attack_1" type='submit' name="attack" value="Attack <%= $player_1.name %>">
 </form>

@@ -11,8 +11,4 @@ class Player
   def take_damage(damage=DEFAULT_DAMAGE)
     @hp -= damage
   end
-
-  def attack(opponent)
-    opponent.take_damage
-  end
 end

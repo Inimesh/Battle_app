@@ -24,14 +24,18 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @player_1_name = $player_1.name
-    @player_2_name = $player_2.name
-
     erb :play
   end
 
   post '/attack' do 
-    $player_2.take_damage
+    p params
+    p @player_1_name
+    if params["attack"] == "Attack #{ $player_1.name }"
+      $player_1.take_damage()
+    elsif params["attack"] == "Attack #{ $player_2.name }"
+      $player_2.take_damage()
+    end
+
     redirect '/play'
   end
 
