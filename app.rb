@@ -2,6 +2,7 @@ require "sinatra"
 require "sinatra/reloader"
 
 require_relative './lib/player.rb'
+require_relative './lib/game.rb'
 
 class Battle < Sinatra::Base
   enable :sessions
@@ -18,8 +19,7 @@ class Battle < Sinatra::Base
   end 
 
   post '/names' do
-    $player_1 = Player.new(params[:player_1_name])
-    $player_2 = Player.new(params[:player_2_name])
+    $game = Game.new(Player.new(params[:player_1_name]), Player.new(params[:player_2_name]))
     redirect '/play'
   end
 
@@ -30,11 +30,7 @@ class Battle < Sinatra::Base
   post '/attack' do 
     p params
     p @player_1_name
-    if params["attack"] == "Attack #{ $player_1.name }"
-      $player_1.take_damage()
-    elsif params["attack"] == "Attack #{ $player_2.name }"
-      $player_2.take_damage()
-    end
+    $game.attack(params["attack"])
 
     redirect '/play'
   end
